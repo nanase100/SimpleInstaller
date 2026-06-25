@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="createDesktopShortcut" xml:space="preserve">
+    <value>デスクトップにショートカットを作成する</value>
+    <comment>デスクトップショートカットを作るかのチェック</comment>
+  </data>
+  <data name="deleteSave" xml:space="preserve">
+    <value>セーブデータを削除する</value>
+    <comment>セーブデータも削除するチェック</comment>
+  </data>
+  <data name="dirBtn" xml:space="preserve">
+    <value>参照...</value>
+    <comment>インストール先選択ボタン</comment>
+  </data>
+  <data name="installBtnText" xml:space="preserve">
+    <value>インストール</value>
+    <comment>インストールボタン</comment>
+  </data>
+  <data name="installPath" xml:space="preserve">
+    <value>インストール先を指定してください。</value>
+    <comment>インストール先フォルダの指定説明</comment>
+  </data>
+  <data name="MsgInstallCancel" xml:space="preserve">
+    <value>インストールをキャンセルしました。</value>
+    <comment>インストールのキャンセル</comment>
+  </data>
+  <data name="MsgInstallComp" xml:space="preserve">
+    <value>インストールが完了しました。</value>
+    <comment>インストールの完了</comment>
+  </data>
+  <data name="MsgUninstallComp" xml:space="preserve">
+    <value>アンインストールが完了しました。</value>
+    <comment>アンインストール完了通知</comment>
+  </data>
+  <data name="MsgUninstallConfirm" xml:space="preserve">
+    <value>アンイストールを実行してよろしいですか？</value>
+    <comment>アンインストール開始確認</comment>
+  </data>
+  <data name="startup" xml:space="preserve">
+    <value>インストール後にアプリを起動する</value>
+    <comment>インストール後に起動するか</comment>
+  </data>
+  <data name="uninstallBtn" xml:space="preserve">
+    <value>アンインストール</value>
+    <comment>アンインストールボタン</comment>
+  </data>
+  <data name="uninstallPath" xml:space="preserve">
+    <value>アンインストール先フォルダ</value>
+    <comment>アンインストール先フォルダ</comment>
+  </data>
+  <data name="updateBtnText" xml:space="preserve">
+    <value>アップデート</value>
+    <comment>コメント</comment>
+  </data>
+  <data name="updatePath" xml:space="preserve">
+    <value>アップデート先フォルダ</value>
+    <comment>アップデートするフォルダパスラベル</comment>
+  </data>
+  <data name="MsgUpdateCancel" xml:space="preserve">
+    <value>アップデートをキャンセルしました。</value>
+    <comment>アップデートのキャンセル</comment>
+  </data>
+  <data name="MsgUpdateComp" xml:space="preserve">
+    <value>アップデートが完了しました。</value>
+    <comment>アップデートの完了</comment>
+  </data>
+  <data name="titleUpdate" xml:space="preserve">
+    <value>アップデート</value>
+  </data>
+  <data name="titleInstall" xml:space="preserve">
+    <value>インストール</value>
+  </data>
+  <data name="titleUninstall" xml:space="preserve">
+    <value>アンインストール</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="msgUnfoundUninstallInfo" xml:space="preserve">
+    <value>アンインストール情報が見つかりません。</value>
+  </data>
+  <data name="startMenuUninstall" xml:space="preserve">
+    <value>をアンインストールする</value>
+    <comment>スタートメニューのアンインストールショートカット名</comment>
+  </data>
+  <data name="fileListIncorrect" xml:space="preserve">
+    <value>インストール済ファイルリストが正しくありません</value>
+  </data>
+  <data name="msgDiscChangeFront" xml:space="preserve">
+    <value>ディスク</value>
+  </data>
+  <data name="msgDiscChangeRear" xml:space="preserve">
+    <value>に交換して、ＯＫを押してください。</value>
+  </data>
+  <data name="LogInsStart" xml:space="preserve">
+    <value>インストールを開始しています</value>
+  </data>
+  <data name="LogInsCopy" xml:space="preserve">
+    <value>をコピーしました</value>
+  </data>
+  <data name="LogInsComplete" xml:space="preserve">
+    <value>インストールが完了しました。</value>
+  </data>
+  <data name="LogInsCancel" xml:space="preserve">
+    <value>インストールをキャンセルしました。</value>
+  </data>
+  <data name="LogUpdateStart" xml:space="preserve">
+    <value>アップデートを開始しています</value>
+  </data>
+  <data name="LogUpdateCopy" xml:space="preserve">
+    <value>をコピーしました</value>
+  </data>
+  <data name="LogUpdateComplete" xml:space="preserve">
+    <value>アップデートが完了しました</value>
+  </data>
+  <data name="MsgUpdateNotinstalled" xml:space="preserve">
+    <value>%gametitle%がインストールされていません。\n%gametitle%を先にインストールして下さい。</value>
+    <comment>アップデート時、まだベース作品がインストールされていない場合</comment>
+  </data>
+</root>

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SimpleInstaller": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\スタディ§ステディnew\\インストーラー仮完成\\インストーラー本体"
+    }
+  }
+}
