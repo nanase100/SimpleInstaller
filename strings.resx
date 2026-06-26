@@ -234,4 +234,16 @@
     <value>%gametitle%がインストールされていません。\n%gametitle%を先にインストールして下さい。</value>
     <comment>アップデート時、まだベース作品がインストールされていない場合</comment>
   </data>
+  <data name="installPathAlready" xml:space="preserve">
+    <value>既に下記フォルダにインストールされています</value>
+    <comment>インストール済み時のインストール先説明</comment>
+  </data>
+  <data name="MsgInstallAlready" xml:space="preserve">
+    <value>既にゲームはインストールされていますが、\nトラブル解決等のため再度インストールしますか？</value>
+    <comment>インストール済の状況で再度インストールしようとした際の確認</comment>
+  </data>
+  <data name="installBoot" xml:space="preserve">
+    <value>ゲームの起動</value>
+    <comment>インストール済の場合の起動ボタンテキスト</comment>
+  </data>
 </root>

@@ -20,6 +20,7 @@ namespace SimpleInstaller
 		public static InstallMode					m_BootMode	= InstallMode.Install;
 		public static string						REG_KEY_BASE = "";
 		public static Microsoft.Win32.RegistryKey?	m_REG_KEY = null;
+		public static bool m_IsInstalled = false;
 
 
 		[STAThread]
@@ -31,7 +32,7 @@ namespace SimpleInstaller
 
 #if DEBUG
 #else
-			Directory.SetCurrentDirectory( Path.GetDirectoryName( Application.ExecutablePath ));
+			//Directory.SetCurrentDirectory( Path.GetDirectoryName( Application.ExecutablePath ));
 #endif
 
 
@@ -51,6 +52,11 @@ namespace SimpleInstaller
 
 			REG_KEY_BASE	= $"SOFTWARE\\{m_info.MakerName}\\{m_info.GameTitle}";
 			m_REG_KEY		= Microsoft.Win32.Registry.CurrentUser.OpenSubKey(Program.REG_KEY_BASE);
+
+			if( m_REG_KEY != null)
+			{
+				m_IsInstalled = ( m_REG_KEY?.GetValue("InstallPath") != null ? true : false );
+			}
 
 			if (m_BootMode == InstallMode.Uninstall)
 			{

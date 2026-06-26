@@ -216,4 +216,13 @@
   <data name="MsgUpdateNotinstalled" xml:space="preserve">
     <value>%gametitle% is not installed.Please install %gametitle%.</value>
   </data>
+  <data name="installPathAlready" xml:space="preserve">
+    <value>already installed.</value>
+  </data>
+  <data name="MsgInstallAlready" xml:space="preserve">
+    <value>The game is already installed. Would you like to reinstall it to resolve issues or for other reasons?</value>
+  </data>
+  <data name="installBoot" xml:space="preserve">
+    <value>Launch Game</value>
+  </data>
 </root>

@@ -169,16 +169,30 @@ namespace SimpleInstaller
 		}
 
 		//-----------------------------------------------------------
-		// ファイルをバッファでコピー（キャンセルトークン対応）
+		// ファイルをバッファでコピー（最適化版）
 		//-----------------------------------------------------------
-		private void CopyFile(string sourceFile, string targetFile )
+		private void CopyFile(string sourceFile, string targetFile)
 		{
-			const int bufferSize = 1024 * 1024; // 1MB バッファ
+			// ファイルサイズに応じたバッファサイズの自動選択
+			var fileInfo = new FileInfo(sourceFile);
+			int bufferSize = DetermineOptimalBufferSize(fileInfo.Length);
 
 			try
 			{
-				using (var sourceStream = new FileStream(sourceFile, FileMode.Open,   FileAccess.Read,  FileShare.Read, bufferSize))
-				using (var targetStream = new FileStream(targetFile, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize))
+				using (var sourceStream = new FileStream(
+					sourceFile,
+					FileMode.Open,
+					FileAccess.Read,
+					FileShare.Read,
+					bufferSize,
+					FileOptions.SequentialScan))
+				using (var targetStream = new FileStream(
+					targetFile,
+					FileMode.Create,
+					FileAccess.Write,
+					FileShare.None,
+					bufferSize,
+					FileOptions.WriteThrough))
 				{
 					byte[] buffer = new byte[bufferSize];
 					int bytesRead;
@@ -191,8 +205,25 @@ namespace SimpleInstaller
 			}
 			catch (Exception ex)
 			{
-
+				// エラーハンドリング
 			}
+		}
+
+		/// <summary>
+		/// ファイルサイズに応じた最適なバッファサイズを決定します
+		/// </summary>
+		private int DetermineOptimalBufferSize(long fileSize)
+		{
+			// 小ファイル（<10MB）: 256KB
+			if (fileSize < 10 * 1024 * 1024)
+				return 256 * 1024;
+
+			// 中ファイル（10MB～100MB）: 1MB（デフォルト）
+			if (fileSize < 100 * 1024 * 1024)
+				return 1024 * 1024;
+
+			// 大ファイル（>100MB）: 4MB
+			return 4 * 1024 * 1024;
 		}
 	}
 }

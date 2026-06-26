@@ -4,15 +4,16 @@ using System.Globalization;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
+using static System.Windows.Forms.Design.AxImporter;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace SimpleInstaller
 {
 	public partial class MainForm : Form
 	{
-		private bool						m_isNowInstall	= false;
-		private InstallerLogic				installer		= new InstallerLogic();
-		private CancellationTokenSource?	cancellationTokenSource;
+		private bool m_isNowInstall = false;
+		private InstallerLogic installer = new InstallerLogic();
+		private CancellationTokenSource? cancellationTokenSource;
 
 		//-----------------------------------------------------------
 		//
@@ -35,7 +36,12 @@ namespace SimpleInstaller
 			}
 			catch { }
 
+			btnBoot.Enabled = Program.m_IsInstalled;
+
 			txtInstallPath.Text			= installPath;
+
+			if( Program.m_IsInstalled ) txtInstallPath.Text = Program.m_REG_KEY?.GetValue("InstallPath") as string ?? "";
+
 			chkDesktopShortcut.Checked	= true;                              // デフォルトでショートカットを作成するようにする
 			chkRunAfter.Checked			= true;                             // デフォルトでインストール後に実行するようにする
 		}
@@ -48,8 +54,11 @@ namespace SimpleInstaller
 		{
 			if (m_isNowInstall == false)
 			{
+				if (Program.m_IsInstalled == true)
+					if (MessageBox.Show(this, strings.MsgInstallAlready, "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+
 				var driveLetter = Path.GetPathRoot(txtInstallPath.Text);
-				var driveInfor	= new DriveInfo(driveLetter);
+				var driveInfor = new DriveInfo(driveLetter);
 
 				await DoInstall();
 			}
@@ -82,8 +91,8 @@ namespace SimpleInstaller
 
 			try
 			{
-				var result				= await Task.Run(() => installer.Install(options, cancellationTokenSource.Token));
-				var uninstallExePath	= Path.Combine(options.InstallPath, "uninstall.exe");
+				var result = await Task.Run(() => installer.Install(options, cancellationTokenSource.Token));
+				var uninstallExePath = Path.Combine(options.InstallPath, "uninstall.exe");
 
 				RegisterUninstaller(Program.m_info.GameTitle, uninstallExePath, Program.m_info.GameTitle, Program.m_info.Version, Program.m_info.MakerName, options.InstallPath);
 
@@ -139,8 +148,8 @@ namespace SimpleInstaller
 		//-----------------------------------------------------------
 		private void btnBrowse_Click(object sender, EventArgs e)
 		{
-			using var dlg = new FolderBrowserDialog();
-			dlg.SelectedPath = txtInstallPath.Text;
+			using var dlg		= new FolderBrowserDialog();
+			dlg.SelectedPath	= txtInstallPath.Text;
 			if (dlg.ShowDialog(this) == DialogResult.OK) txtInstallPath.Text = dlg.SelectedPath;
 
 			string baseDir = Program.ReplaceSpecialFolders(Program.m_info.MakerName + "\\" + Program.m_info.GameTitle);
@@ -161,12 +170,12 @@ namespace SimpleInstaller
 
 			if (key == null) return;
 
-			key.SetValue("DisplayName",		displayName);
-			key.SetValue("DisplayVersion",	version);
-			key.SetValue("Publisher",		publisher);
+			key.SetValue("DisplayName", displayName);
+			key.SetValue("DisplayVersion", version);
+			key.SetValue("Publisher", publisher);
 			key.SetValue("InstallLocation", installFolder);
 			key.SetValue("UninstallString", exePath);
-			key.SetValue("DisplayIcon",		exePath);
+			key.SetValue("DisplayIcon", exePath);
 			//	key.SetValue( "EstimatedSize", sizeKb, RegistryValueKind.DWord); 		//一覧に表示する容量(kb換算)とのこと
 		}
 
@@ -185,7 +194,7 @@ namespace SimpleInstaller
 		private void CultureUI()
 		{
 			var culture = System.Globalization.CultureInfo.CurrentUICulture;
-			var name	= System.Globalization.CultureInfo.CurrentCulture.Name;
+			var name = System.Globalization.CultureInfo.CurrentCulture.Name;
 
 			if (name != "ja-JP") name = "en-US";
 
@@ -193,13 +202,24 @@ namespace SimpleInstaller
 
 			btnInstall.Text			= strings.installBtnText;
 			btnBrowse.Text			= strings.dirBtn;
-			chkDesktopShortcut.Text	= strings.createDesktopShortcut;
+			chkDesktopShortcut.Text = strings.createDesktopShortcut;
 			chkRunAfter.Text		= strings.startup;
 			lblTitle.Text			= strings.installPath;
 			lblStatus.Text			= strings.updatePath;
+			btnBoot.Text			= strings.installBoot;
 
 		}
 
+		private void btnBoot_Click(object sender, EventArgs e)
+		{
+			var basePath = Program.m_REG_KEY?.GetValue("InstallPath") as string;
+			var exe = Path.Combine(basePath, Program.m_info.MainExeName);
+			if (exe != null)
+			{
+				try { Process.Start(new ProcessStartInfo(exe) { UseShellExecute = true }); }
+				catch { }
+			}
+		}
 	}
 
 }

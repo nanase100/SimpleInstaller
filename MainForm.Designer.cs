@@ -16,6 +16,7 @@
 			chkRunAfter = new CheckBox();
 			btnInstall = new Button();
 			progressBar = new ProgressBar();
+			btnBoot = new Button();
 			((System.ComponentModel.ISupportInitialize)pictureBoxBanner).BeginInit();
 			SuspendLayout();
 			// 
@@ -101,9 +102,21 @@
 			progressBar.Size = new Size(557, 23);
 			progressBar.TabIndex = 7;
 			// 
+			// btnBoot
+			// 
+			btnBoot.Enabled = false;
+			btnBoot.Location = new Point(386, 200);
+			btnBoot.Name = "btnBoot";
+			btnBoot.Size = new Size(90, 50);
+			btnBoot.TabIndex = 9;
+			btnBoot.Text = "起動";
+			btnBoot.UseVisualStyleBackColor = true;
+			btnBoot.Click += btnBoot_Click;
+			// 
 			// MainForm
 			// 
 			ClientSize = new Size(584, 321);
+			Controls.Add(btnBoot);
 			Controls.Add(lblStatus);
 			Controls.Add(progressBar);
 			Controls.Add(btnInstall);
@@ -133,5 +146,6 @@
 		private System.Windows.Forms.CheckBox chkRunAfter;
 		private System.Windows.Forms.Button btnInstall;
 		private System.Windows.Forms.ProgressBar progressBar;
+		private Button btnBoot;
 	}
 }

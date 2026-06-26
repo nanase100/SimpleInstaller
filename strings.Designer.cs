@@ -106,6 +106,15 @@ namespace SimpleInstaller {
         }
         
         /// <summary>
+        ///   ゲームの起動 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string installBoot {
+            get {
+                return ResourceManager.GetString("installBoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   インストール に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string installBtnText {
@@ -120,6 +129,15 @@ namespace SimpleInstaller {
         internal static string installPath {
             get {
                 return ResourceManager.GetString("installPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   既に下記フォルダにインストールされています に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string installPathAlready {
+            get {
+                return ResourceManager.GetString("installPathAlready", resourceCulture);
             }
         }
         
@@ -201,6 +219,15 @@ namespace SimpleInstaller {
         internal static string msgDiscChangeRear {
             get {
                 return ResourceManager.GetString("msgDiscChangeRear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   既にゲームはインストールされていますが、\nトラブル解決等のため再度インストールしますか？ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MsgInstallAlready {
+            get {
+                return ResourceManager.GetString("MsgInstallAlready", resourceCulture);
             }
         }
         
